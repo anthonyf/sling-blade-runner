@@ -1,13 +1,17 @@
-(ns sbr.core
-  (:gen-class)
-  (:require [clojure.string :as str]
-            [clojure.java.io :as io]
-            [clojure.set :as set]))
+;;;; PROBLEM STATEMENT
 
-;;sling <blade> runner
-;;license <to kill> a mockingbird
+;; How long a chain of overlapping movie titles, like Sling Blade Runner, can
+;; you find?"
+;;
+;; Use the following listing of movie titles: MOVIES.TXT. Multi-word overlaps,
+;; as in "License to Kill a Mockingbird," are allowed. The same title may not be
+;; used more than once in a solution. Heuristic solutions that may not always
+;; produce the greatest number of titles will be accepted: seek a reasonable
+;; tradeoff of efficiency and optimality.
+;;
+;; The file MOVIES.TXT contains 6561 movie titles in alphabetical order.
 
-;; best chain: 241 movie titles:
+;; best chain found: 241 movie titles:
 
 ;; Q AND A HANDFUL OF DUST TO GLORY ROAD GAMES PEOPLE PLAY NEW YORK COP LAND OF
 ;; THE DEAD END OF DAYS OF HEAVEN CAN WAIT UNTIL DARK BLUE WORLD TRADE CENTER
@@ -42,6 +46,12 @@
 ;; AMERICAN HISTORY X THE MAN WITH THE X RAY EYES OF AN ANGEL BABY SECRET OF THE
 ;; LOST LEGEND OF THE LOST BOYS LIFE AS A HOUSE PARTY 3 NINJAS KICK BACK TO THE
 ;; BEACH PARTY GIRL IN THE CADILLAC MAN OF THE YEAR OF THE DRAGON SEED OF CHUCKY
+
+(ns sbr.core
+  (:gen-class)
+  (:require [clojure.string :as str]
+            [clojure.java.io :as io]
+            [clojure.set :as set]))
 
 (defn join-movies
   [movie1 movie2]
