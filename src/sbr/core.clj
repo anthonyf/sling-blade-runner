@@ -66,19 +66,12 @@
     (when-not (empty? middle)
       [beginning middle end])))
 
-;; (join-movies ["SLING" "BLADE"] ["BLADE" "RUNNER"])
-;; (join-movies ["SLING" "BLADE"]["SLING" "BLADE"])
-;; (join-movies ["license" "to" "kill"] ["to" "kill" "a" "mockingbird"])
-;; (join-movies ["pretty" "woman"] ["superman" "2"])
-
 (defn movies
   []
   (with-open [r (io/reader (io/resource "movies.lst"))]
     (doall (map (fn [movie]
                   (str/split movie #" "))
                 (line-seq r)))))
-
-;; (movies)
 
 (defn sort-by-most-neighbors
   "sorts a list of movies by how many movies they connect to"
@@ -107,8 +100,6 @@
             graph
             (keys graph))))
 
-;; ((make-movie-graph (movies) ["SLING" "BLADE"])
-
 (defn dfs
   [start neighbors-fn acc visited-fn]
   (loop [stack (list [start #{} []])
@@ -127,32 +118,6 @@
                    acc))
           (recur stack acc))))))
 
-;; (defn- test-neighbors
-;;   [[x y]]
-;;   (reduce (fn [neighbors [ox oy]]
-;;             (let [nx (+ ox x)
-;;                   ny (+ oy y)]
-;;               (if (or (< nx 0)
-;;                       (>= nx 3)
-;;                       (< ny 0)
-;;                       (>= ny 3))
-;;                 neighbors
-;;                 (conj neighbors [nx ny]))))
-;;           []
-;;           (list [0 1] [1 0] [1 1] [0 -1] [-1 0] [-1 1] [1 -1] [-1 -1])))
-
-;; (defn- test-graph
-;;   []
-;;   (let [graph [[0 1 2]
-;;                [3 4 5]
-;;                [6 7 8]]]
-;;     (dfs [0 0]
-;;          test-neighbors
-;;          (fn [parents]
-;;            (prn (mapv (fn [[x y]]
-;;                         ((graph y) x))
-;;                       parents))))))
-
 (defn overlap-movies
   [movies]
   (second
@@ -163,10 +128,6 @@
                  [movie (concat combined end)])))
            [[] []]
            movies)))
-
-;; (print-overlapping-movies [["SLING" "BLADE"]["BLADE"]["BLADE" "RUNNER"]])
-;; (print-overlapping-movies [["DUST" "TO" "GLORY"] ["GLORY" "ROAD"] ["ROAD" "GAMES"]])
-;; (print-overlapping-movies [["Q" "AND" "A"] ["A" "HANDFUL" "OF" "DUST"] ["DUST" "TO" "GLORY"]])
 
 (defn find-chains
   ([]
