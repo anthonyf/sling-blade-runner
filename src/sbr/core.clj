@@ -11,7 +11,7 @@
 ;;
 ;; The file MOVIES.TXT contains 6561 movie titles in alphabetical order.
 
-;; best chain found: 241 movie titles:
+;;;; BEST CHAIN FOUND: 241 movie titles
 
 ;; Q AND A HANDFUL OF DUST TO GLORY ROAD GAMES PEOPLE PLAY NEW YORK COP LAND OF
 ;; THE DEAD END OF DAYS OF HEAVEN CAN WAIT UNTIL DARK BLUE WORLD TRADE CENTER
